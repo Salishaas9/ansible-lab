@@ -1,0 +1,9 @@
+---
+- name: Install Nginx on Debian Family
+  apt:
+    name: nginx
+    state: latest
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+  notify:
+    - nginx restart
