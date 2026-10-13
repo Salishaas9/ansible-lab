@@ -1,5 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 from ansible.module_utils.basic import AnsibleModule
+import platform
+import socket
+import os
+import time
 
 DOCUMENTATION = '''
 ---
@@ -40,18 +44,6 @@ def main():
         argument_spec={},
         supports_check_mode=True
     )
-    import platform
-    import socket
-    import os
-    def main():
-    module = AnsibleModule(
-        argument_spec={},
-        supports_check_mode=True
-    )
-    import platform
-    import socket
-    import os
-    import time
     result = {
         'changed': False,
         'ansible_facts': {

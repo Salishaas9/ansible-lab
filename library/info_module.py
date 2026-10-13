@@ -1,5 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 from ansible.module_utils.basic import AnsibleModule
+import platform
+import socket
 
 DOCUMENTATION = '''
 ---
@@ -34,20 +36,19 @@ def main():
         argument_spec={},
         supports_check_mode=True
     )
-    import platform
-    import socket
     result = {
-    'changed': False,
-    'info': {
-        'message': 'Это модуль информации',
-        'version': '1.0',
-        'author': 'Кошелева А.А.',
-        'status': 'работает',
-        'hostname': socket.gethostname(),
-        'os': platform.system(),
-        'python_version': platform.python_version()
+        'changed': False,
+        'info': {
+            'message': 'Это модуль информации',
+            'version': '1.0',
+            'author': 'Кошелева А.А.',
+            'status': 'работает',
+            'hostname': socket.gethostname(),
+            'os': platform.system(),
+            'python_version': platform.python_version()
+        }
     }
-}
+    module.exit_json(**result)
 
 
 if __name__ == '__main__':
