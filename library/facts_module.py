@@ -39,13 +39,24 @@ def main():
     import platform
     import socket
     import os
+    def main():
+    module = AnsibleModule(
+        argument_spec={},
+        supports_check_mode=True
+    )
+    import platform
+    import socket
+    import os
+    import time
     result = {
         'changed': False,
         'ansible_facts': {
             'my_hostname': socket.gethostname(),
             'my_os': platform.system(),
             'my_python_version': platform.python_version(),
-            'my_cpu_count': os.cpu_count()
+            'my_cpu_count': os.cpu_count(),
+            'my_uptime_seconds': int(time.time() - os.path.getmtime('/proc')),
+            'my_architecture': platform.machine()
         }
     }
     module.exit_json(**result)
