@@ -1,0 +1,19 @@
+---
+- name: Использование пользовательских модулей
+  hosts: ubuntu_servers
+  become: yes
+  tasks:
+    - name: Запуск модуля информации
+      info_module:
+      register: info_result
+
+    - name: Вывод информации
+      debug:
+        msg: "Информация: {{ info_result.info }}"
+
+    - name: Запуск модуля фактов
+      facts_module:
+
+    - name: Вывод кастомных фактов
+      debug:
+        msg: "Факты: hostname={{ my_hostname }}, os={{ my_os }}, python={{ my_python_version }}, cpu={{ my_cpu_count }}, uptime={{ my_uptime_seconds }}, arch={{ my_architecture }}"
